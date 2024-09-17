@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Use the latest version of the Servlet API
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    // Embedded Tomcat - Latest version
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.14'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6'
+//    implementation 'org.apache.tomcat.embed:tomcat-embed-logging-juli:10.1.14'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.14'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+application {
+    mainClass = 'com.hussi.EmbeddedTomcat'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17) // Latest LTS version of Java (Java 17)
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
